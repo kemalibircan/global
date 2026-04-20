@@ -52,8 +52,8 @@ export default function ContactSection() {
           >
             <div>
               <p className="text-white/30 text-xs tracking-widest uppercase mb-2">{c.emailLabel}</p>
-              <a href="mailto:hello@globaldijital.com" className="text-neon-blue text-lg hover:text-white transition-colors duration-300 font-medium">
-                hello@globaldijital.com
+              <a href="mailto:infoglobaldijital@gmail.com" className="text-neon-blue text-lg hover:text-white transition-colors duration-300 font-medium">
+                infoglobaldijital@gmail.com
               </a>
             </div>
             <div className="section-divider" />

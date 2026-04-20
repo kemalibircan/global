@@ -101,7 +101,7 @@ export default function ContactPage() {
             {/* Email */}
             <div className="glass rounded-2xl p-6">
               <p className="text-white/30 text-xs tracking-widest uppercase mb-2">{t.contact.emailLabel}</p>
-              <a href="mailto:hello@globaldijital.com" className="text-neon-blue text-lg font-medium hover:text-white transition-colors duration-300">hello@globaldijital.com</a>
+              <a href="mailto:infoglobaldijital@gmail.com" className="text-neon-blue text-lg font-medium hover:text-white transition-colors duration-300">infoglobaldijital@gmail.com</a>
             </div>
             {/* Office */}
             <div className="glass rounded-2xl p-6">
