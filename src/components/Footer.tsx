@@ -2,14 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-
-const footerLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Work', href: '#portfolio' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
-]
+import { useLocale } from '@/components/LocaleContext'
 
 const socialLinks = [
   {
@@ -45,37 +38,34 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const { t, locale } = useLocale()
+  const nav = t.nav
+
+  const footerLinks = [
+    { label: nav.services, href: '#services' },
+    { label: nav.work, href: '#portfolio' },
+    { label: nav.about, href: '#about' },
+    { label: nav.contact, href: '#contact' },
+  ]
+
   return (
     <footer className="bg-dark border-t border-dark-border">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo */}
-          <Link href="/" className="relative w-36 h-10 block">
-            <Image src="/logo.PNG" alt="GlobalDijital" fill className="object-contain object-left md:object-left" />
+          <Link href={`/${locale}`} className="relative w-36 h-10 block">
+            <Image src="/logo.PNG" alt="GlobalDijital" fill className="object-contain object-left" />
           </Link>
-
-          {/* Nav links */}
           <nav className="flex flex-wrap justify-center gap-6">
             {footerLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-white/50 hover:text-white text-sm transition-colors duration-300"
-              >
+              <Link key={link.href} href={link.href} className="text-white/50 hover:text-white text-sm transition-colors duration-300">
                 {link.label}
               </Link>
             ))}
           </nav>
-
-          {/* Social icons */}
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
               <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
+                key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}
                 className="w-9 h-9 rounded-full flex items-center justify-center text-white/40 hover:text-neon-blue border border-white/10 hover:border-neon-blue/30 transition-all duration-300"
               >
                 {social.icon}
@@ -83,14 +73,8 @@ export default function Footer() {
             ))}
           </div>
         </div>
-
-        {/* Divider */}
         <div className="section-divider my-8" />
-
-        {/* Copyright */}
-        <p className="text-center text-white/30 text-sm">
-          © 2025 GlobalDijital. All rights reserved. Built with passion for digital excellence.
-        </p>
+        <p className="text-center text-white/30 text-sm">{t.footer.copyright}</p>
       </div>
     </footer>
   )
