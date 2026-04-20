@@ -77,10 +77,14 @@ export default function ContactSection() {
             <div>
               <p className="text-white/30 text-xs tracking-widest uppercase mb-4">{c.followLabel}</p>
               <div className="flex gap-4 flex-wrap">
-                {['LinkedIn', 'Twitter', 'Instagram'].map((social) => (
-                  <a key={social} href={`https://${social.toLowerCase()}.com/globaldijital`} target="_blank" rel="noopener noreferrer"
+                {[
+                  { label: 'LinkedIn', href: 'https://linkedin.com/company/globaldijital' },
+                  { label: 'Twitter', href: 'https://twitter.com/globaldijital' },
+                  { label: 'Instagram', href: 'https://www.instagram.com/globaldijitalsoft?igsh=ZTB2b3FkZHJlYzE2' },
+                ].map(({ label, href }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                     className="px-4 py-2 rounded-full glass border border-dark-border text-white/50 text-sm hover:text-white hover:border-neon-blue/30 transition-all duration-300" data-cursor-hover>
-                    {social}
+                    {label}
                   </a>
                 ))}
               </div>

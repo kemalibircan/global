@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     }
 
     const { error } = await resend.emails.send({
-      from: 'Website <noreply@globaldijital.com>',
+      from: 'GlobalDijital <onboarding@resend.dev>',
       to: 'kemal.alibircan@gmail.com',
       replyTo: email,
       subject: `Yeni İletişim Formu Mesajı - ${name}`,
