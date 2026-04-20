@@ -10,15 +10,32 @@ export default function ContactSection() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
   const [formState, setFormState] = useState({ name: '', email: '', message: '' })
+  const [honeypot, setHoneypot] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setErrorMsg(null)
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 1500))
-    setLoading(false)
-    setSubmitted(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formState, website: honeypot }),
+      })
+      const data = await res.json()
+      if (!res.ok || data.error) {
+        setErrorMsg(data.error ?? 'Bir hata oluştu.')
+      } else {
+        setSubmitted(true)
+      }
+    } catch {
+      setErrorMsg('Bağlantı hatası. Lütfen tekrar deneyin.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -90,6 +107,11 @@ export default function ContactSection() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="glass rounded-2xl p-8 space-y-5">
+                {/* Honeypot */}
+                <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
+                  <input type="text" name="website" tabIndex={-1} autoComplete="off"
+                    value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+                </div>
                 {[
                   { label: c.form.nameLabel, placeholder: c.form.namePlaceholder, key: 'name', type: 'text' },
                   { label: c.form.emailLabel, placeholder: c.form.emailPlaceholder, key: 'email', type: 'email' },
@@ -115,6 +137,12 @@ export default function ContactSection() {
                     placeholder={c.form.messagePlaceholder}
                   />
                 </div>
+                {errorMsg && (
+                  <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {errorMsg}
+                  </div>
+                )}
                 <button
                   type="submit" disabled={loading}
                   className="w-full py-4 rounded-xl font-semibold text-dark text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70"
