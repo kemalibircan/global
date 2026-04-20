@@ -139,7 +139,10 @@ export default function ContactPage() {
             {/* Phone */}
             <div className="glass rounded-2xl p-6">
               <p className="text-white/30 text-xs tracking-widest uppercase mb-2">{c.phoneLabel}</p>
-              <a href="tel:+902121234567" className="text-white/70 hover:text-neon-blue transition-colors duration-300 text-sm">+90 212 123 45 67</a>
+              <div className="space-y-1">
+                <a href="tel:+905346124642" className="block text-white/70 hover:text-neon-blue transition-colors duration-300 text-sm">+90 534 612 46 42</a>
+                <a href="tel:+905522489971" className="block text-white/70 hover:text-neon-blue transition-colors duration-300 text-sm">+90 552 248 99 71</a>
+              </div>
             </div>
             {/* What to expect */}
             <div className="glass rounded-2xl p-6">
