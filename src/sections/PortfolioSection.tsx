@@ -6,12 +6,12 @@ import { motion, useInView } from 'framer-motion'
 import { useLocale } from '@/components/LocaleContext'
 
 const projectImages = [
-  'https://picsum.photos/seed/ecommerce/800/600',
-  'https://picsum.photos/seed/fintech/800/600',
-  'https://picsum.photos/seed/aibot/800/600',
-  'https://picsum.photos/seed/health/800/600',
-  'https://picsum.photos/seed/saas/800/600',
-  'https://picsum.photos/seed/logistics/800/600',
+  'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop',
 ]
 const projectColors = ['#00D4FF', '#7B2FBE', '#00D4FF', '#7B2FBE', '#00D4FF', '#7B2FBE']
 const projectSlugs = ['nexcommerce', 'finflow', 'aria-ai', 'medisync', 'launchpad', 'trackroute']

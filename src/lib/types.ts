@@ -6,6 +6,11 @@ export interface Translations {
     about: string
     contact: string
     cta: string
+    packages: string
+    packagesWeb: string
+    packagesMobile: string
+    packagesSocial: string
+    templates: string
   }
   hero: {
     badge: string
@@ -72,6 +77,13 @@ export interface Translations {
   }
   footer: {
     copyright: string
+    phone: string
+    phone2: string
+    phoneLabel: string
+    email: string
+    emailLabel: string
+    addressLabel: string
+    address: string
   }
 
   // ── Inner pages ──────────────────────────────────────────
@@ -125,6 +137,83 @@ export interface Translations {
       faqBadge: string
       faqTitle: string
       faqs: Array<{ q: string; a: string }>
+    }
+    packages: {
+      web: {
+        badge: string
+        title: string
+        subtitle: string
+        cta: string
+        popular: string
+        currency: string
+        features: string
+        plans: Array<{
+          name: string
+          price: string
+          period: string
+          description: string
+          features: string[]
+          highlighted: boolean
+        }>
+      }
+      mobile: {
+        badge: string
+        title: string
+        subtitle: string
+        cta: string
+        popular: string
+        currency: string
+        features: string
+        plans: Array<{
+          name: string
+          price: string
+          period: string
+          description: string
+          features: string[]
+          highlighted: boolean
+        }>
+      }
+      social: {
+        badge: string
+        title: string
+        subtitle: string
+        cta: string
+        popular: string
+        currency: string
+        features: string
+        plans: Array<{
+          name: string
+          price: string
+          period: string
+          description: string
+          features: string[]
+          highlighted: boolean
+        }>
+      }
+    }
+    templates: {
+      badge: string
+      title: string
+      subtitle: string
+      filterAll: string
+      filterWeb: string
+      filterMobile: string
+      ctaLabel: string
+      ctaButton: string
+      items: Array<{
+        slug: string
+        type: 'web' | 'mobile'
+        sector: string
+        title: string
+        description: string
+        tag: string
+        color: string
+        features: string[]
+        price: string
+        deliveryTime: string
+        heroDesc: string
+        highlights: Array<{ icon: string; title: string; text: string }>
+      }>
     }
   }
 }

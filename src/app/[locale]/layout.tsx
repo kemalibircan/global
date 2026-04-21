@@ -8,6 +8,7 @@ import LoadingScreen from '@/components/LoadingScreen'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SmoothScroll from '@/components/SmoothScroll'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -48,12 +49,21 @@ export async function generateMetadata({
     description: descriptions[locale],
     keywords: 'web development, mobile apps, UI/UX design, AI integration, digital strategy',
     authors: [{ name: 'GlobalDijital', url: 'https://globaldijital.com' }],
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon.ico', type: 'image/x-icon' },
+      ],
+      shortcut: '/favicon.ico',
+      apple: '/favicon.ico',
+    },
     openGraph: {
       type: 'website',
       url: `https://globaldijital.com/${locale}`,
       title: titles[locale],
       description: descriptions[locale],
       siteName: 'GlobalDijital',
+      images: [{ url: '/logo.PNG', width: 400, height: 120, alt: 'GlobalDijital' }],
     },
     metadataBase: new URL('https://globaldijital.com'),
   }
@@ -84,6 +94,7 @@ export default function LocaleLayout({
             <Navbar />
             <main>{children}</main>
             <Footer />
+            <WhatsAppButton />
           </SmoothScroll>
         </LocaleProvider>
       </body>
